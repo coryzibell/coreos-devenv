@@ -38,7 +38,7 @@ docker run \
 	-e USERNAME="remote" \
 	-e PASSWORD="blahblahblah" \
 	-d \
-	-name mysql-standard \
+	--name mysql-standard \
 	epocsquadron/mysql-standard
 
 echo ":: Starting apache container..."
@@ -55,6 +55,6 @@ docker run \
 	-p 80:80 \
 	-p 443:443 \
 	-d \
-	-name apache-php-dynamic \
-	-link /mysql-standard:db \
+	--name apache-php-dynamic \
+	--link /mysql-standard:db \
 	epocsquadron/apache-php-dynamic
