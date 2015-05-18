@@ -13,9 +13,10 @@ Vagrant.configure("2") do |config|
 
 	# Share the current folder via NFS
 	config.vm.synced_folder ".", "/home/core/sites",
-		id: "core",
-		:nfs => true,
-		:mount_options => ['nolock,vers=3,udp,noatime']
+		                id: "core",
+                                nfs_version: "4",
+		                :nfs => true,
+		                :mount_options => ['nolock,noatime']
 
 	# Provision docker with shell
 	# config.vm.provision
