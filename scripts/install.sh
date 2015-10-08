@@ -30,7 +30,7 @@ runChecks() {
 createMasterDirectory() {
 
 	echo -e "\033[0;32m:: Cloning to hidden directory at '$HIDDEN_MASTER_DIRECTORY'.\033[0m"
-	git clone https://github.com/EpocSquadron/coreos-devenv.git "$HIDDEN_MASTER_DIRECTORY"
+	git clone https://github.com/coryzibell/coreos-devenv.git "$HIDDEN_MASTER_DIRECTORY"
 
 }
 
@@ -102,7 +102,7 @@ main() {
 
 	echo -e "\033[0;32m:: Finished installing your new development environment!\033[0m
     \033[0;34mRun 'vagrant up' to get it going. Check out the Readme.md file in $HIDDEN_MASTER_DIRECTORY or go
-    to \033[4mhttps://github.com/EpocSquadron/coreos-devenv\033[0m\033[0;34m for more on how to use your new environment.\033[0m
+    to \033[4mhttps://github.com/coryzibell/coreos-devenv\033[0m\033[0;34m for more on how to use your new environment.\033[0m
 "
 
 }
@@ -112,7 +112,7 @@ main || {
 	echo -e >&2 "
     \033[0;31mYour new development environment didn't finish installing.
     Check any error output above and feel free to open a github
-    issue at \033[4mhttps://github.com/EpocSquadron/coreos-devenv/issues\033[0m"
+    issue at \033[4mhttps://github.com/coryzibell/coreos-devenv/issues\033[0m"
 	exit 4
 
 }

@@ -1,8 +1,8 @@
 # Start with Ubuntu base
-FROM ubuntu:12.10
+FROM ubuntu:14.04
 
 # Credit
-MAINTAINER Daniel Poulin
+MAINTAINER Cory Zibell
 
 # Install some basics
 RUN apt-get update

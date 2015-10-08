@@ -1,13 +1,16 @@
 # Start with Ubuntu base
-FROM ubuntu:12.10
+FROM ubuntu:14.04
 
 # Credit
-MAINTAINER Daniel Poulin
+MAINTAINER Cory Zibell
 
 # Install some basics
 RUN apt-get update
 
 # Install apache and php5
+RUN apt-get install -y python-software-properties
+Run apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php5
 RUN apt-get install -y apache2
 RUN apt-get install -y php5 \
 	php5-mysql \
@@ -30,16 +33,18 @@ ENV APACHE_LOG_DIR /var/log/apache2
 RUN a2enmod ssl headers rewrite vhost_alias
 
 # Set up remote debugging for xdebug
-RUN mkdir /var/run/apache2
+# RUN mkdir /var/run/apache2
 ADD xdebug.ini /etc/php5/conf.d/xdebug.ini
 
 # Set the default timezone
 ADD timezone.ini /etc/php5/conf.d/timezone.ini
 
 # Disable default site and replace with our own
-ADD dynamic-vhost.conf /etc/apache2/sites-available/dynamic
+ADD dynamic.conf /etc/apache2/sites-available/
 ADD setDocRoot.php /etc/apache2/includes/
-RUN a2dissite default && a2ensite dynamic
+# RUN mv /etc/apache2/sites-available/default /etc/apache2/sites-available/default.conf
+# RUN a2dissite default && a2ensite dynamic
+RUN a2ensite dynamic
 
 # Run apache on standard ports
 EXPOSE 80 443

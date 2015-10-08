@@ -11,14 +11,14 @@ for REPO in $REPOS; do
 
 	# Look in docker's public repository for an exact match, removing the
 	# line describing the query used, which triggers a false positive.
-	SEARCH_RESULT=`docker search epocsquadron/$REPO | sed 1d | grep -o epocsquadron/$REPO`
+	SEARCH_RESULT=`docker search coryzibell/$REPO | sed 1d | grep -o coryzibell/$REPO`
 
 	if [[ -n $SEARCH_RESULT ]]; then
-		echo "Found epocsquadron/$REPO, pulling latest..."
-		docker pull "epocsquadron/$REPO"
+		echo "Found coryzibell/$REPO, pulling latest..."
+		docker pull "coryzibell/$REPO"
 	else
-		echo "Didn't find epocsquadron/$REPO, building it ourselves..."
-		docker build -t epocsquadron/$REPO /home/core/sites/.coreos-devenv/containers/$REPO/
+		echo "Didn't find coryzibell/$REPO, building it ourselves..."
+		docker build -t coryzibell/$REPO /home/core/sites/.coreos-devenv/containers/$REPO/
 	fi
 
 done
@@ -39,7 +39,7 @@ docker run \
 	-e PASSWORD="blahblahblah" \
 	-d \
 	--name mysql-standard \
-	epocsquadron/mysql-standard
+	coryzibell/mysql-standard
 
 echo ":: Starting apache container..."
 
@@ -57,4 +57,4 @@ docker run \
 	-d \
 	--name apache-php-dynamic \
 	--link /mysql-standard:db \
-	epocsquadron/apache-php-dynamic
+	coryzibell/apache-php-dynamic
