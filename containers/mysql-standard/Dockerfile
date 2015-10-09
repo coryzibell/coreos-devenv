@@ -14,7 +14,7 @@ RUN apt-get install -y mysql-server
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Add a grants file to set up remote user
-# and disbale the root user's remote access.
+# and disable the root user's remote access.
 ADD grants.sql /etc/mysql/
 
 # Add a conf file for correcting "listen"
