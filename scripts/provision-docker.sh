@@ -55,12 +55,6 @@ docker run \
 	-p 80:80 \
 	-p 443:443 \
 	-d \
-<<<<<<< HEAD
-	--name apache-php-dynamic \
-	--link /mysql56-standard:db \
-	coryzibell/apache-php-dynamic
-=======
 	--name apache-php56-dynamic \
-	--link /mysql-standard:db \
+	--link /mysql56-standard:db \
 	coryzibell/apache-php56-dynamic
->>>>>>> php56
