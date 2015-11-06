@@ -15,7 +15,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get install -y python-software-properties
 Run apt-get install -y software-properties-common
-RUN add-apt-repository ppa:ondrej/php5
+RUN add-apt-repository ppa:ondrej/php5-5.6
 RUN apt-get update
 RUN apt-get install -y apache2
 RUN apt-get install -y php5 \
