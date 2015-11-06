@@ -6,11 +6,17 @@ MAINTAINER Cory Zibell
 
 # Install some basics
 RUN apt-get update
+RUN sudo locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # Install apache and php5
+
 RUN apt-get install -y python-software-properties
 Run apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php5
+RUN apt-get update
 RUN apt-get install -y apache2
 RUN apt-get install -y php5 \
 	php5-mysql \
