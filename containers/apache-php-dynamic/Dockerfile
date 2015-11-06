@@ -27,6 +27,8 @@ RUN apt-get install -y php5 \
 	php-apc \
 	libapache2-mod-php5
 
+RUN php5enmod curl json mysql mysqli pdo_mysql pdo_sqlite readline gd mcrypt pdo sqlite3
+
 # Clean up after install
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
