@@ -45,16 +45,22 @@ echo ":: Starting apache container..."
 
 # Sometimes this is leftover from a previous run,
 # but isn't running, so let's just remove it.
-if [[ -n `docker ps | grep -o apache-php-dynamic` ]]; then
-	docker stop apache-php-dynamic
+if [[ -n `docker ps | grep -o apache-php56-dynamic` ]]; then
+	docker stop apache-php56-dynamic
 fi
-docker rm apache-php-dynamic
+docker rm apache-php56-dynamic
 
 docker run \
 	-v /home/core/sites:/var/www \
 	-p 80:80 \
 	-p 443:443 \
 	-d \
+<<<<<<< HEAD
 	--name apache-php-dynamic \
 	--link /mysql56-standard:db \
 	coryzibell/apache-php-dynamic
+=======
+	--name apache-php56-dynamic \
+	--link /mysql-standard:db \
+	coryzibell/apache-php56-dynamic
+>>>>>>> php56
