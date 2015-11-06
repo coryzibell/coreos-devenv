@@ -5,10 +5,9 @@ FROM ubuntu:14.04
 MAINTAINER Cory Zibell
 
 # Install some basics
-RUN apt-get update
 
 # Install mysql
-RUN apt-get install -y mysql-server
+RUN RUN apt-get update && apt-get install -y mysql-server-5.6
 
 # Clean up after install
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

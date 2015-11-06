@@ -27,10 +27,10 @@ echo ":: Starting mysql container..."
 
 # Sometimes this is leftover from a previous run,
 # but isn't running, so let's just remove it.
-if [[ -n `docker ps | grep -o mysql-standard` ]]; then
-	docker stop mysql-standard
+if [[ -n `docker ps | grep -o mysql56-standard` ]]; then
+	docker stop mysql56-standard
 fi
-docker rm mysql-standard
+docker rm mysql56-standard
 
 docker run \
 	-v /home/core/sites/.coreos-databases/mysql:/var/lib/mysql \
@@ -38,8 +38,8 @@ docker run \
 	-e USERNAME="remote" \
 	-e PASSWORD="blahblahblah" \
 	-d \
-	--name mysql-standard \
-	coryzibell/mysql-standard
+	--name mysql56-standard \
+	coryzibell/mysql56-standard
 
 echo ":: Starting apache container..."
 
@@ -56,5 +56,5 @@ docker run \
 	-p 443:443 \
 	-d \
 	--name apache-php-dynamic \
-	--link /mysql-standard:db \
+	--link /mysql56-standard:db \
 	coryzibell/apache-php-dynamic
