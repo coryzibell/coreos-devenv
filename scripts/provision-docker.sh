@@ -23,6 +23,9 @@ for REPO in $REPOS; do
 
 done
 
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
 echo ":: Starting mysql container..."
 
 # Sometimes this is leftover from a previous run,
@@ -30,7 +33,6 @@ echo ":: Starting mysql container..."
 if [[ -n `docker ps | grep -o mysql56-standard` ]]; then
 	docker stop mysql56-standard
 fi
-docker rm mysql56-standard
 
 docker run \
 	-v /home/core/sites/.coreos-databases/mysql:/var/lib/mysql \
@@ -48,7 +50,6 @@ echo ":: Starting apache container..."
 if [[ -n `docker ps | grep -o apache-php56-dynamic` ]]; then
 	docker stop apache-php56-dynamic
 fi
-docker rm apache-php56-dynamic
 
 docker run \
 	-v /home/core/sites:/var/www \
